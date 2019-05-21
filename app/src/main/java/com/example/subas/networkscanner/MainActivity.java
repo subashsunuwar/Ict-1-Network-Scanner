@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         btnPing = (Button) findViewById(R.id.btnPing);
+        btnTraceroute = (Button) findViewById(R.id.btnTracer);
 
 
 //creating new object of view -- inner class
@@ -67,6 +68,36 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+                builder.show();
+            }
+        });
+        btnTraceroute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle("Traceroute");
+
+                // Set up the input
+                final EditText input = new EditText(v.getContext());
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+
+                // Set up the buttons
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        m_Text = input.getText().toString();
+                        //this part to be done by shishir
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
                 builder.show();
             }
         });
