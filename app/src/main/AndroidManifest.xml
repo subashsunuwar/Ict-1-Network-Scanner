@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NetworkInfo" />
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".dhcpInfo" />
+        <activity android:name=".UserSettingActivity"></activity>
     </application>
 
 </manifest>
