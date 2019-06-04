@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/NetworkScannerShishir.iml" filepath="$PROJECT_DIR$/NetworkScannerShishir.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/NetworkScanner.iml" filepath="$PROJECT_DIR$/NetworkScanner.iml" />
+>>>>>>> 6746852fdeb3c779979ffe93a75f9442da48e7b6
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
