@@ -1,11 +1,10 @@
-package com.example.subas.networkscanner;
+package com.android.networkscanner;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
 public class TracerouteActivity extends AppCompatActivity {
-
     TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,14 +1,19 @@
-package com.example.subas.networkscanner;
+package com.android.networkscanner;
 
-import android.preference.PreferenceActivity;
-import android.support.v7.app.AppCompatActivity;
+/**
+ * Created by silwal shishir on 11/3/16.
+ */
+
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 
 public class UserSettingActivity extends PreferenceActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         addPreferencesFromResource(R.xml.preferences);
+
     }
 }

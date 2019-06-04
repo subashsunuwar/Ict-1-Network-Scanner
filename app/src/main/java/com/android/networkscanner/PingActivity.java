@@ -1,4 +1,4 @@
-package com.example.subas.networkscanner;
+package com.android.networkscanner;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
