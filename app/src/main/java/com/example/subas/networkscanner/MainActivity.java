@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-        Button btnClientlist,btnPing,btnTraceroute,btnNetworkInfo;
+        Button btnPing,btnTraceroute,btnNetworkInfo;
     private String m_Text = "";
     private static final int RESULT_SETTINGS = 1;
 
