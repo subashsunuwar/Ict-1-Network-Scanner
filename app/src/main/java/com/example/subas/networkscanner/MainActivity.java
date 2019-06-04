@@ -1,7 +1,9 @@
 package com.example.subas.networkscanner;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +15,16 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class MainActivity extends AppCompatActivity {
         Button btnPing,btnTraceroute,btnNetworkInfo;
     private String m_Text = "";
     private static final int RESULT_SETTINGS = 1;
+
+    ProgressDialog ringProgressDialog;
 
 
     @Override
@@ -122,5 +130,49 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    private class ping extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            String str = "";
+            try {
+                Process process = Runtime.getRuntime().exec(
+                        "/system/bin/ping -c 8 " + urls[0]);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(
+                        process.getInputStream()));
+                int i;
+                char[] buffer = new char[4096];
+                StringBuffer output = new StringBuffer();
+                while ((i = reader.read(buffer)) > 0)
+                    output.append(buffer, 0, i);
+                reader.close();
+
+                // body.append(output.toString()+"\n");
+                str = output.toString();
+                // Log.d(TAG, str);
+            } catch (IOException e) {
+                // body.append("Error\n");
+                e.printStackTrace();
+            }
+            ringProgressDialog.dismiss();
+            return str;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            ringProgressDialog = ProgressDialog.show(MainActivity.this, "Please wait ...", "Ping in progress...", true);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            //Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
+            ringProgressDialog.dismiss();
+            Intent intent = new Intent(getBaseContext(), PingActivity.class);
+            System.out.println("data present >>>>>>>>>>>>>>>>> "+ result);
+            intent.putExtra("data", result);
+            startActivity(intent);
+            //finish();
+        }
     }
 }
