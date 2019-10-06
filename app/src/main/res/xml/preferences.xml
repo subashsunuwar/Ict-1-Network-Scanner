@@ -4,6 +4,7 @@
         <EditTextPreference
             android:title="@string/pref_user_name"
             android:summary="@string/pref_user_name_summary"
-            android:key="prefUsername"/>
+            android:inputType="phone"
+            android:key="serverIpKey"/>
     </PreferenceCategory>
 </PreferenceScreen>

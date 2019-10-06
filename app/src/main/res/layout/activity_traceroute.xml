@@ -1,40 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.android.networkscanner.TracerouteActivity"
-    android:background="@color/bg">
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.android.networkscanner.TracerouteActivity">
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Result"
+        android:layout_marginTop="16dp"
+        android:text="URL/HOST/IP TO TRACE ROUTE" />
+
+
+    <EditText
+        android:id="@+id/url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textWebEditText"
+        android:text="www.google.com" />
+
+    <Button
+        android:id="@+id/btnTracer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TRACE" />
+
+    <TextView
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/textcolor"/>
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Result"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <ScrollView
         android:id="@+id/SCROLLER_ID"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
+        android:layout_marginTop="12dp"
+        android:background="@color/bg"
         android:fillViewport="true"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true">
+        android:scrollbars="vertical">
+
         <TextView
+            android:id="@+id/tracerouteResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text=""
-            android:id="@+id/tracerouteResult"
             android:layout_marginTop="36dp"
-            android:textColor="@color/textcolor"/>
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/textcolor" />
     </ScrollView>
 
-</RelativeLayout>
+</LinearLayout>
