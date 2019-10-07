@@ -1,7 +1,7 @@
 package com.android.networkscanner;
 
 /**
- * Created by silwal shishir on 11/3/16.
+ * Created by shishir on 11/3/16.
  */
 
 import android.os.Bundle;
