@@ -1,11 +1,13 @@
-package com.android.networkscanner;
+package com.jcub.networkscanner;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.jcub.networkscanner.R;
+
 public class PortActivity extends AppCompatActivity {
-    TextView pl,hi;
+    TextView pl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

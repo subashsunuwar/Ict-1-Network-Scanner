@@ -1,4 +1,4 @@
-package com.android.networkscanner;
+package com.jcub.networkscanner;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.jcub.networkscanner.R;
 
 public class SplashActivity extends Activity {
 

@@ -1,12 +1,9 @@
-package com.android.networkscanner;
+package com.jcub.networkscanner;
 
-import android.app.Activity;
-import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.jcub.networkscanner.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,9 +33,9 @@ public class ClientListActivity extends AppCompatActivity {
     ArrayList<String> listItems = new ArrayList<String>();
     ArrayAdapter<String> adapter;
     ListView moreListView;
+    ProgressDialog ringProgressDialog;
     Button refresh;
     ListView lv;
-    static ProgressDialog ringProgressDialog = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +45,8 @@ public class ClientListActivity extends AppCompatActivity {
 
         lv = (ListView) findViewById(android.R.id.list);
         new HttpAsyncTask().execute("http://"+showUserSettings()+":8089/devices");
-        /*adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                listItems);*/
         adapter=new ArrayAdapter<String>(this,
-                R.layout.list_layout,
+                android.R.layout.simple_list_item_1,
                 listItems);
         //setListAdapter(adapter);
         lv.setAdapter(adapter);
@@ -63,8 +59,8 @@ public class ClientListActivity extends AppCompatActivity {
                                     long arg3) {
                 // TODO Auto-generated method stub
                 Log.d("############","Items " +  listItems.get(arg2) );
-                //ProgressDialog dialog = ProgressDialog.show(ClientListActivity.this, "",
-                //        "Loading. Please wait...", true);
+                ProgressDialog dialog = ProgressDialog.show(ClientListActivity.this, "",
+                        "Loading. Please wait...", true);
                 new getData().execute("http://"+showUserSettings()+":8089/portscan?ip="+listItems.get(arg2));
 
             }
@@ -83,11 +79,10 @@ public class ClientListActivity extends AppCompatActivity {
     public String showUserSettings() {
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(this);
-        return sharedPrefs.getString("prefUsername","null");
+        return sharedPrefs.getString("serverIpKey","null");
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        private ProgressDialog ringProgressDialog = null;
         @Override
         protected String doInBackground(String... urls) {
 
@@ -147,7 +142,6 @@ public class ClientListActivity extends AppCompatActivity {
                     System.out.println(line);
                     data+=line+"\n";
                 }
-
                 return data.toString();
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -161,23 +155,17 @@ public class ClientListActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            //ClientListActivity.ringProgressDialog = ProgressDialog.show(ClientListActivity.this, "Please wait ...", "Getting Data from Server...", true);
-            //ClientListActivity.ringProgressDialog.dismiss();
-            ClientListActivity.ringProgressDialog = new ProgressDialog(ClientListActivity.this);
-            ClientListActivity.ringProgressDialog.setMessage( "Please wait ...");
-            ClientListActivity.ringProgressDialog.show();
-
-
+            ringProgressDialog = ProgressDialog.show(ClientListActivity.this, "Please wait ...", "Getting Data from Server...", true);
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
             //Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
-            ClientListActivity.ringProgressDialog.dismiss();
+            ringProgressDialog.dismiss();
             Intent intent = new Intent(getBaseContext(), PortActivity.class);
             intent.putExtra("PORT_LIST", result);
             startActivity(intent);
-            //finish();
+            finish();
         }
     }
 }

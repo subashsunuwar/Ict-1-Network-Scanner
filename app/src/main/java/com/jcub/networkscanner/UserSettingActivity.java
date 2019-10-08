@@ -1,11 +1,13 @@
-package com.android.networkscanner;
+package com.jcub.networkscanner;
 
 /**
- * Created by silwal shishir on 11/3/16.
+ * Created by shishir on 11/3/16.
  */
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+
+import com.jcub.networkscanner.R;
 
 public class UserSettingActivity extends PreferenceActivity {
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.networkscanner">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.jcub.networkscanner">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,9 +11,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <activity android:name=".SpeedTestActivity"/>
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -45,8 +49,6 @@
         <service
             android:name=".ConnectionService"
             android:enabled="true" />
-
-        <activity android:name=".dhcpInfo"></activity>
     </application>
 
 </manifest>

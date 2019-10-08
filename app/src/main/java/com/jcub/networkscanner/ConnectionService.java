@@ -1,7 +1,7 @@
-package com.android.networkscanner;
+package com.jcub.networkscanner;
 
 /**
- * Created by silwal shishir .
+ * Created by shishir on 10/23/16.
  */
 
 
@@ -24,7 +24,9 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * Created by shishir on 20/03/15.
+ */
 public class ConnectionService extends Service {
 
     // Constant
@@ -38,7 +40,7 @@ public class ConnectionService extends Service {
 
     private Timer mTimer = null;
 
-    private Boolean prevState= true;
+    private Boolean prevState= false;
 
     ConnectionServiceCallback mConnectionServiceCallback;
 
@@ -50,12 +52,12 @@ public class ConnectionService extends Service {
     public interface ConnectionServiceCallback {
         void hasInternetConnection();
         void hasNoInternetConnection();
-
     }
 
     void stateChanged(Boolean x){
-        Intent i = new Intent("com.android.networkscanner.netstatus");
+        Intent i = new Intent("com.jcub.networkscanner.netstatus");
         i.putExtra("NET_STAT",x);
+        //i.putExtra("NET_TYPE", "test");
         sendBroadcast(i);
     }
 

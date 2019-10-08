@@ -1,4 +1,4 @@
-package com.android.networkscanner;
+package com.jcub.networkscanner;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.jcub.networkscanner.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

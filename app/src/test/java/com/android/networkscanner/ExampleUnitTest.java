@@ -1,4 +1,4 @@
-package com.android.networkscanner;
+package com.jcub.networkscanner;
 
 import org.junit.Test;
 

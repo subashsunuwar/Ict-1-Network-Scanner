@@ -1,4 +1,4 @@
-package com.android.networkscanner;
+package com.jcub.networkscanner;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.jcub.networkscanner.R;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
